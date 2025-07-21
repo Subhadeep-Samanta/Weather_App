@@ -199,21 +199,76 @@ body {
 
 /* Responsive Design */
 @media (max-width: 480px) {
+    body {
+        padding: 0;
+        min-height: 100vh;
+        background: linear-gradient(120deg, #74ebd5 0%, #ACB6E5 100%);
+    }
     .weather-container {
-        padding: 1.2rem 0.3rem;
-        max-width: 98vw;
-        border-radius: 1.1rem;
+        padding: 0.7rem 2rem 0.7rem 2rem; /* Increased side gap */
+        max-width: 100vw;
+        min-height: 100vh;
+        border-radius: 0;
+        margin: 0;
+        box-shadow: none;
     }
     .weather-heading {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
+        text-align: center;
     }
-    .weather-box {
-        padding: 1.1rem 0.5rem;
-        border-radius: 1rem;
+    .weather-search {
+        margin-bottom: 0.7rem;
+        width: 100%;
+    }
+    #weather-form {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+    }
+    .search-input {
+        font-size: 0.98rem;
+        padding: 0.7rem 0.8rem;
+        border-radius: 0.7rem;
+        width: 100%;
     }
     .search-btn, .get-weather-btn {
-        padding: 0.7rem 1rem;
+        padding: 0.7rem 0.8rem;
         font-size: 0.98rem;
+        border-radius: 0.7rem;
+        width: 100%;
+    }
+    .weather-result {
+        width: 100%;
+    }
+    .weather-box {
+        padding: 0.7rem 0.2rem;
+        border-radius: 0.7rem;
+        font-size: 0.98rem;
+    }
+    .weather-condition {
+        font-size: 1.05rem;
+    }
+    .weather-temp {
+        font-size: 2rem;
+    }
+    .weather-humidity,
+    .weather-city {
+        font-size: 0.98rem;
+    }
+    .weather-footer-bar {
+        font-size: 0.95rem;
+        border-radius: 0 0 0.7rem 0.7rem;
+        padding: 0.4rem 0 0.05rem 0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100vw;
+        margin: 0;
+        z-index: 10;
+    }
+    .footer-credit {
+        font-size: 0.95rem;
     }
 }
 @media (max-width: 700px) {

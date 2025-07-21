@@ -1,4 +1,4 @@
-const API_KEY = '28dfd7050095b16f0acecc3ecf926fcc';
+const API_KEY = '810120b0fb8a3f3399ca13da5c58eb5d';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('weather-form');

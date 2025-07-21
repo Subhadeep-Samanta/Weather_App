@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #74ebd5 0%, #ACB6E5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s;
+}
+
+/* Weather App Container */
+.weather-container {
+    background: rgba(255,255,255,0.90);
+    padding: 3.5rem 3rem 2.5rem 3rem;
+    border-radius: 2.5rem;
+    box-shadow: 0 16px 48px rgba(60, 72, 100, 0.22), 0 2px 8px rgba(60, 72, 100, 0.12);
+    max-width: 600px;
+    min-height: 600px;
+    width: 100%;
+    margin: 2.5rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(3px);
+    transition: max-width 0.3s, min-height 0.3s, padding 0.3s;
+}
+
+/* Decorative Weather Icon (top right) */
+.weather-container::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 120px;
+    height: 120px;
+    background: url('https://img.icons8.com/color/96/000000/partly-cloudy-day--v2.png') no-repeat center/contain;
+    opacity: 0.18;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Heading */
+.weather-heading {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #22223b;
+    margin-bottom: 1.7rem;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 8px #b3c6e7;
+    z-index: 1;
+}
+
+/* Search Section */
+.weather-search {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    z-index: 1;
+}
+#weather-form {
+    display: flex;
+    gap: 0.5rem;
+}
+.search-input {
+    flex: 1;
+    padding: 0.85rem 1.1rem;
+    border: 1.5px solid #b3c6e7;
+    border-radius: 1rem;
+    font-size: 1.05rem;
+    outline: none;
+    background: #f1f5f9;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(60, 72, 100, 0.06);
+}
+.search-input:focus {
+    border-color: #74ebd5;
+    background: #fff;
+    box-shadow: 0 2px 8px #b3c6e7;
+}
+.search-btn, .get-weather-btn {
+    padding: 0.85rem 1.5rem;
+    background: linear-gradient(90deg, #74ebd5 0%, #ACB6E5 100%);
+    color: #22223b;
+    border: none;
+    border-radius: 1rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(60, 72, 100, 0.10);
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+.search-btn:hover, .get-weather-btn:hover {
+    background: linear-gradient(90deg, #ACB6E5 0%, #74ebd5 100%);
+    color: #22223b;
+    box-shadow: 0 4px 16px #b3c6e7;
+}
+
+/* Weather Result Section */
+.weather-result {
+    width: 100%;
+    z-index: 1;
+}
+
+/* Weather Box */
+.weather-box {
+    background: linear-gradient(120deg, #f8fafc 60%, #e0e7ff 100%);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(60, 72, 100, 0.10);
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.7s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+
+/* Weather Condition Icon (dynamic, JS can add .weather-icon) */
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 0.5rem auto;
+    display: block;
+}
+
+/* Weather Info */
+.weather-condition {
+    font-size: 1.3rem;
+    color: #4f8cff;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+.weather-temp {
+    font-size: 2.7rem;
+    color: #22223b;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-shadow: 0 2px 8px #b3c6e7;
+}
+.weather-humidity,
+.weather-city {
+    font-size: 1.08rem;
+    color: #4b5563;
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+.weather-city {
+    color: #22223b;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    letter-spacing: 1px;
+}
+
+/* Error Message */
+.weather-box[style*="color:#e11d48"] {
+    background: linear-gradient(120deg, #ffe0e3 60%, #f8fafc 100%);
+    color: #e11d48 !important;
+    font-weight: 600;
+    border: 1.5px solid #e11d48;
+}
+
+/* Footer Bar */
+.weather-footer-bar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.25rem;
+    padding: 0.8rem 0 0.2rem 0;
+    margin-top: auto;
+    background: rgba(236, 242, 255, 0.85);
+    border-top: 1.5px solid #e0e7ff;
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 -2px 8px #b3c6e71a;
+    position: relative;
+    z-index: 2;
+}
+.footer-credit {
+    color: #4f8cff;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    letter-spacing: 0.5px;
+}
+.weather-footer-bar strong {
+    color: #22223b;
+    font-weight: 700;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .weather-container {
+        padding: 1.2rem 0.3rem;
+        max-width: 98vw;
+        border-radius: 1.1rem;
+    }
+    .weather-heading {
+        font-size: 1.3rem;
+    }
+    .weather-box {
+        padding: 1.1rem 0.5rem;
+        border-radius: 1rem;
+    }
+    .search-btn, .get-weather-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.98rem;
+    }
+}
+@media (max-width: 700px) {
+    .weather-container {
+        max-width: 98vw;
+        min-height: 400px;
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        border-radius: 1.2rem;
+    }
+    .weather-heading {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .weather-search {
+        margin-bottom: 1rem;
+    }
+    .weather-box {
+        padding: 1.1rem 0.5rem;
+        border-radius: 1rem;
+    }
+    .search-btn, .get-weather-btn {
+        padding: 0.7rem 1rem;
+        font-size: 0.98rem;
+    }
+    .weather-footer-bar {
+        font-size: 1rem;
+        border-radius: 0 0 1.2rem 1.2rem;
+        padding: 0.6rem 0 0.1rem 0;
+    }
+}
+@media (max-width: 400px) {
+    .weather-container {
+        padding: 0.5rem 0.1rem;
+        border-radius: 0.7rem;
+    }
+    .weather-heading {
+        font-size: 1.05rem;
+    }
+    .weather-box {
+        padding: 0.7rem 0.2rem;
+        border-radius: 0.7rem;
+    }
+    .search-btn, .get-weather-btn {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+    }
+    .weather-footer-bar {
+        font-size: 0.9rem;
+        border-radius: 0 0 0.7rem 0.7rem;
+        padding: 0.4rem 0 0.05rem 0;
+    }
+}

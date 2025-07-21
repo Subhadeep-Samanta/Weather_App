@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="weather-container">
+        <header>
+            <h1 class="weather-heading">Weather Forecast</h1>
+        </header>
+        <section class="weather-search">
+            <form id="weather-form" autocomplete="off">
+                <input 
+                    type="text" 
+                    class="search-input" 
+                    id="city-input" 
+                    placeholder="Enter city name" 
+                    required
+                >
+                <button type="submit" class="search-btn">Get Weather</button>
+            </form>
+        </section>
+        <section class="weather-result" id="weather-result" aria-live="polite">
+            <!-- Weather info will be displayed here -->
+        </section>
+        <nav class="weather-footer-bar" aria-label="Footer">
+            <span>☀️🌤️⛅🌧️⛈️🌦️❄️🌈</span>
+            <span class="footer-credit">| Designed by <strong>Subhadeep🖼️</strong></span>
+        </nav>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

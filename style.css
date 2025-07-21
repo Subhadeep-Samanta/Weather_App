@@ -13,7 +13,6 @@ body {
     transition: background 0.5s;
 }
 
-/* Weather App Container */
 .weather-container {
     background: rgba(255,255,255,0.90);
     padding: 3.5rem 3rem 2.5rem 3rem;
